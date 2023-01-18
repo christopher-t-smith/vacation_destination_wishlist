@@ -1,0 +1,60 @@
+#myWishlistWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.wishlistDestinationInfo {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.5rem;
+}
+
+.wishlistDestination {
+    width: 15rem;
+    height: fit-content;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 0.25rem;
+}
+
+.wishlistDestinationImg,
+.wishlistDestinationImg-top {
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-top-right-radius: calc(0.25rem - 1px);
+}
+
+.wishlistDestinationImg,
+.wishlistDestinationImg-top,
+.wishlistDestinationImg-bottom {
+    flex-shrink: 0;
+    width: 100%;
+}
+
+img {
+    vertical-align: middle;
+    overflow-clip-margin: content-box;
+}
+
+
+.wishlistDestination {
+    margin: "20px;";
+    width: "15rem";
+    height: "fit-content";
+}
+
+h4 {
+    text-align: center;
+}
+
+.submit {
+    width: 100%;
+}
+
+.buttonsWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
