@@ -31,9 +31,9 @@ function resetForm(form) {
     }
 }
 
-// Passes values as arguements and created div elements with the class "wishListDestination". It is then appended to the page.
+// Passes values as arguements and created elements with the class "wishListDestination". It is then appended to the page.
 function createWishlistDestination(name, location, photo, description) {
-    var wishlistDestination = document.createElement("div");
+    var wishlistDestination = document.createElement("section");
     wishlistDestination.setAttribute("class", "wishlistDestination");
     wishlistDestination.style.margin = "20px;";
     wishlistDestination.style.height = "fit-content";
@@ -44,8 +44,8 @@ function createWishlistDestination(name, location, photo, description) {
 
     var alternatePhoto = "https://www.abwe.org/sites/default/files/paragraphs/hero/eva-darron-oCdVtGFeDC0-unsplash.jpg";
 
-    // Div for wishlistDestinationBody
-    var wishlistDestinationBody = document.createElement("div");
+    // Element for wishlistDestinationBody
+    var wishlistDestinationBody = document.createElement("section");
     wishlistDestinationBody.setAttribute("class", "wishlistDestinationInfo");
 
     var wishlistDestinationName = document.createElement("h5");
@@ -59,7 +59,7 @@ function createWishlistDestination(name, location, photo, description) {
     wishlistDestinationBody.appendChild(wishlistDestinationLocation);
 
     // create buttonWrapper divider
-    var buttonsWrapper = document.createElement("div");
+    var buttonsWrapper = document.createElement("footer");
     buttonsWrapper.setAttribute("class", "buttonsWrapper")
     // Creates the edit Button and adds and event listener when the button is clicked to call the editWishlistDestination function.
     var wishlistDestinationEditBtn = document.createElement("button");
