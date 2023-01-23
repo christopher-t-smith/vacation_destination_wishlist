@@ -1,3 +1,38 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("./media/backgroundImg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.jumbotron{
+    border-style:groove;
+    border-color: rgba(0, 0, 0, 0.462);
+}
+
+.col-sm-3 {
+    background-color: rgba(100, 171, 242, 0.642);
+    padding: 2%;
+    border-style:groove;
+    border-radius: 0%;
+    border-color: rgba(0, 0, 0, 0.462);
+
+}
+
+.col-sm-9 {
+    background-color: rgba(100, 171, 242, 0.642);
+    padding: 2%;
+    border-style:groove;
+    border-radius: 0%;
+    border-color: rgba(0, 0, 0, 0.462);
+}
+
 #myWishlistWrapper {
     display: flex;
     flex-wrap: wrap;
@@ -14,9 +49,10 @@
     width: 15rem;
     height: fit-content;
     word-wrap: break-word;
-    background-color: #fff;
+    background-color: rgba(100, 171, 242, 0.642);
+    box-shadow: 8px;
     background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.04);
+    border: 3px solid rgba(0, 0, 0, 0.569);
     border-radius: 0.25rem;
 }
 
@@ -53,8 +89,40 @@ h4 {
     width: 100%;
 }
 
+#submitWishlist {
+    background-color: rgba(0, 0, 0, 0.569);
+    border-color: rgba(0, 0, 0, 0.569);
+}
+
 .buttonsWrapper {
     width: 100%;
     display: flex;
     justify-content: space-between;
+}
+
+nav {
+    position: absolute;
+    bottom: 0;
+}
+
+#topLinks {
+    padding: 0;
+}
+
+header {
+    position: relative;
+}
+
+.footer {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    text-size-adjust: 50px;
+    color: black;
+    background-color: rgb(52, 58, 64);
+    margin-top: 30px;
+    bottom: 0;
+    margin-bottom: 0;
+    color: white;
+
 }

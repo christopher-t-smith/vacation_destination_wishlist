@@ -1,77 +1,73 @@
 // Select the form and add an event listener to the submit event which calls the submitDestination function.
-document.querySelector("#wishlistForm").addEventListener("submit", submitDestination);
+const form = document.querySelector("#wishlistForm");
+form.addEventListener("submit", submitDestination);
 
+// Reference ID myWishlistWrapper for the variable
+const myWishlistWrapper = document.querySelector("#myWishlistWrapper");
 
 // Submit values entered in form for fields
 function submitDestination(event) {
     // prevent browser from sending form data to server.
     event.preventDefault();
     // Takes input from form into variables
-    var name = event.target.elements["name"].value;
-    var location = event.target.elements["location"].value;
-    var photo = event.target.elements["photo"].value;
-    var description = event.target.elements["description"].value;
-    // Reference ID myWishlistWrapper for the variable
-    var myWishlistWrapper = document.querySelector("#myWishlistWrapper");
+    const name = form.elements["name"].value;
+    const location = form.elements["location"].value;
+    const photo = form.elements["photo"].value;
+    const description = form.elements["description"].value;
     // Calls the resetForm function
-    resetForm(event.target);
+    resetForm(form);
     // Calls the creatWishlistDestination function
     createWishlistDestination(name, location, photo, description);
-    // If there are no child element inside of myWishlistWrapper, then change the innerHTML text to My WishList
+    // If there are no child element inside of myWishlistWrapper, then change the innerText text to My WishList
     if (myWishlistWrapper.children.length > 0) {
-        document.querySelector("#enterDetails").innerHTML = "My WishList";
+        document.querySelector("#enterDetails").innerText = "My WishList";
     }
 }
 
-
 // Reset or Clears Form Values
 function resetForm(form) {
-    for (var i = 0; i < form.length; i++) {
+    for (let i = 0; i < form.length; i++) {
         form.elements[i].value = "";
     }
 }
 
+function resetForm(form) {
+    form.reset();
+}
+
+
 // Passes values as arguements and created elements with the class "wishListDestination". It is then appended to the page.
 function createWishlistDestination(name, location, photo, description) {
-    var wishlistDestination = document.createElement("section");
+    // create wishlistDestination section
+    const wishlistDestination = document.createElement("section");
     wishlistDestination.setAttribute("class", "wishlistDestination");
     wishlistDestination.style.margin = "20px;";
     wishlistDestination.style.height = "fit-content";
     wishlistDestination.style.width = "15rem";
 
-    var img = document.createElement("img");
+    // create img element
+    const img = document.createElement("img");
     img.setAttribute("class", "wishlistDestinationImg");
 
-    var alternatePhoto = "https://www.abwe.org/sites/default/files/paragraphs/hero/eva-darron-oCdVtGFeDC0-unsplash.jpg";
+    const alternatePhoto = "https://www.abwe.org/sites/default/files/paragraphs/hero/eva-darron-oCdVtGFeDC0-unsplash.jpg";
 
     // Element for wishlistDestinationBody
-    var wishlistDestinationBody = document.createElement("section");
+    const wishlistDestinationBody = document.createElement("section");
     wishlistDestinationBody.setAttribute("class", "wishlistDestinationInfo");
 
-    var wishlistDestinationName = document.createElement("h5");
+    // create name element
+    const wishlistDestinationName = document.createElement("h5");
     wishlistDestinationName.setAttribute("class", "wishlistDestinationName")
     wishlistDestinationName.innerText = name;
     wishlistDestinationBody.appendChild(wishlistDestinationName);
 
-    var wishlistDestinationLocation = document.createElement("H6");
+    // create location element
+    const wishlistDestinationLocation = document.createElement("H6");
     wishlistDestinationLocation.setAttribute("class", "wishlistDestinationLocation");
     wishlistDestinationLocation.innerText = location;
     wishlistDestinationBody.appendChild(wishlistDestinationLocation);
 
-    // create buttonWrapper divider
-    var buttonsWrapper = document.createElement("footer");
-    buttonsWrapper.setAttribute("class", "buttonsWrapper")
-    // Creates the edit Button and adds and event listener when the button is clicked to call the editWishlistDestination function.
-    var wishlistDestinationEditBtn = document.createElement("button");
-    wishlistDestinationEditBtn.setAttribute("class", "btn btn-warning");
-    wishlistDestinationEditBtn.innerText = "Edit";
-    wishlistDestinationEditBtn.addEventListener("click", function () { editWishlistDestination(wishlistDestination) });
-    // Creates the remove Button and adds and event listener when the button is clicked to call the removeWishlistDestination function.
-    var wishlistDestinationDeleteBtn = document.createElement("button");
-    wishlistDestinationDeleteBtn.setAttribute("class", "btn btn-danger");
-    wishlistDestinationDeleteBtn.innerText = "Remove";
-    wishlistDestinationDeleteBtn.addEventListener("click", function () { removeWishlistDestination(wishlistDestination) });
-
+    // create photo element
     // if photo input is empty, then use the alternate photo url as the src.
     if (photo.length === 0) {
         img.setAttribute("src", alternatePhoto);
@@ -79,50 +75,62 @@ function createWishlistDestination(name, location, photo, description) {
         img.setAttribute("src", photo);
     }
 
-    // add photo as child to whishlistDestination
+    // create buttonWrapper divider
+    const buttonsWrapper = document.createElement("footer");
+    buttonsWrapper.setAttribute("class", "buttonsWrapper")
+
+    // Creates the edit Button and adds and event listener when the button is clicked to call the editWishlistDestination function.
+    const editBtn = document.createElement("button");
+    editBtn.setAttribute("class", "btn btn-warning");
+    editBtn.innerText = "Edit";
+    editBtn.addEventListener("click", function () {
+        editWishlistDestination(wishlistDestination);
+    });
+
+    // Creates the remove Button and adds and event listener when the button is clicked to call the removeWishlistDestination function.
+    const deleteBtn = document.createElement("button");
+    deleteBtn.setAttribute("class", "btn btn-danger");
+    deleteBtn.innerText = "Remove";
+    deleteBtn.addEventListener("click", function () {
+        removeWishlistDestination(wishlistDestination);
+    });
+
+    buttonsWrapper.appendChild(editBtn);
+    buttonsWrapper.appendChild(deleteBtn);
+
     wishlistDestination.appendChild(img);
-
-    if (description.length !== 0) {
-        var wishlistDestinationDescription = document.createElement("p");
-        wishlistDestinationDescription.setAttribute("class", "wishlistDestinationDescription")
-        wishlistDestinationDescription.innerText = description;
-        wishlistDestinationBody.appendChild(wishlistDestinationDescription);
-    }
-
-    // Create buttons for Edit and Delete
-    buttonsWrapper.appendChild(wishlistDestinationEditBtn);
-    buttonsWrapper.appendChild(wishlistDestinationDeleteBtn);
-
-    wishlistDestinationBody.appendChild(buttonsWrapper);
-
     wishlistDestination.appendChild(wishlistDestinationBody);
+    wishlistDestination.appendChild(buttonsWrapper);
 
-    // Add the created wishlistDestination myWishlistWrapper
-    document.querySelector("#myWishlistWrapper").appendChild(wishlistDestination)
-
-    return wishlistDestination;
+    document.querySelector("#myWishlistWrapper").appendChild(wishlistDestination);
+    if (document.querySelector("#myWishlistWrapper").children.length > 0) {
+        document.querySelector("#enterDetails").innerText = "My WishList";
+    }
 }
 
 // Function to delete the wishlistDestination
 function removeWishlistDestination(wishlistDestination) {
     wishlistDestination.parentNode.removeChild(wishlistDestination);
+    // Reference ID myWishlistWrapper for the variable
+    const myWishlistWrapper = document.querySelector("#myWishlistWrapper");
     // Change text back if no children
     if (myWishlistWrapper.children.length === 0) {
-        document.querySelector("#enterDetails").innerHTML = "Enter Destination Details";
+        document.querySelector("#enterDetails").innerText = "Enter Destination Details";
     }
 }
 
+
 // Function to edit the wishlistDestination
 function editWishlistDestination(wishlistDestination) {
-    var wishlistDestinationBody = wishlistDestination.querySelector(".wishlistDestinationInfo");
-    var wishlistDestinationName = wishlistDestinationBody.querySelector(".wishlistDestinationName");
-    var wishlistDestinationLocation = wishlistDestinationBody.querySelector(".wishlistDestinationLocation");
-    var photo = wishlistDestination.querySelector("img")
+    const wishlistDestinationBody = wishlistDestination.querySelector(".wishlistDestinationInfo");
+    let wishlistDestinationName = wishlistDestinationBody.querySelector(".wishlistDestinationName");
+    let wishlistDestinationLocation = wishlistDestinationBody.querySelector(".wishlistDestinationLocation");
+    let photo = wishlistDestination.querySelector("img")
 
     // Prompts when editing wishlistDestination and inputs the values into the variables
-    var newWishlistDestinationName = window.prompt("Enter new name");
-    var newWishlistDestinationLocation = window.prompt("Enter new location");
-    var newPhoto = window.prompt("Enter new photo url");
+    let newWishlistDestinationName = window.prompt("Enter new name");
+    let newWishlistDestinationLocation = window.prompt("Enter new location");
+    let newPhoto = window.prompt("Enter new photo url");
 
     // Check is length of the input for Destination name is greater than 0, if true, then sets the inner text as the value.
     if (newWishlistDestinationName.length > 0) {
