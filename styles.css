@@ -9,6 +9,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    
 }
 
 .jumbotron{
@@ -31,6 +32,10 @@ body {
     border-style:groove;
     border-radius: 0%;
     border-color: rgba(0, 0, 0, 0.462);
+}
+
+#searchResultsContainer {
+    overflow:scroll;
 }
 
 #myWishlistWrapper {
@@ -56,22 +61,17 @@ body {
     border-radius: 0.25rem;
 }
 
-.wishlistDestinationImg,
-.wishlistDestinationImg-top {
+img,
+img-top {
     border-top-left-radius: calc(0.25rem - 1px);
     border-top-right-radius: calc(0.25rem - 1px);
 }
 
-.wishlistDestinationImg,
-.wishlistDestinationImg-top,
-.wishlistDestinationImg-bottom {
+img,
+img-top,
+img-bottom {
     flex-shrink: 0;
     width: 100%;
-}
-
-img {
-    vertical-align: middle;
-    overflow-clip-margin: content-box;
 }
 
 
@@ -97,7 +97,9 @@ h4 {
 .buttonsWrapper {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    align-items: baseline;
+    margin: 5px;
 }
 
 nav {
@@ -113,16 +115,59 @@ header {
     position: relative;
 }
 
-.footer {
+footer {
+    position: fixed;
     text-align: center;
     width: 100%;
-    position: absolute;
     text-size-adjust: 50px;
     color: black;
     background-color: rgb(52, 58, 64);
     margin-top: 30px;
-    bottom: 0;
     margin-bottom: 0;
     color: white;
+    bottom: 0%;
+}
 
+.col-md-3 {
+    display: flex;
+}
+
+.mt-3 {
+    display: block;
+    max-width: 250px;
+    max-height: 250px;
+    width: fit-content;
+    height: fit-content;
+    margin-right: 1rem;
+}
+
+.img-Header {
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    justify-content: center;
+    flex-direction: row;
+}
+
+@media (max-width: 600px) {
+    body {
+        background-image: none;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1200px) {
+    h4 {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 800px) {
+    .wishlistDestination {
+        width: 12rem;
+    }
 }

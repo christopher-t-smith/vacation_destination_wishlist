@@ -68,28 +68,24 @@
                         <input input type="text" class="form-control" id="location" name="location" placeholder="Where is it located?" required minlength="2" aria-label="Location">
                     </fieldset>
                     <fieldset class="form-group">
-                        <label for="photo">Photo</label>
-                        <input input type="url" class="form-control" id="photo" name="photo"
-                            placeholder="Enter an image url of the place" aria-label="Photo">
-                    </fieldset>    
-                    <fieldset class="form-group">
                         <label for="description">Description</label>
                         <textarea type="text" class="form-control" id="description" name="description" placeholder="Where is it located?" aria-label="description"></textarea>
                     </fieldset>
                     <button type="submit" class="btn btn-primary submit" id="submitWishlist">Add to list</button>
                 </form>
             </article>
-            <section class="col-sm-9">
+            <section class="col-sm-9" id="wishlistDetails">
                 <h4 id="enterDetails">Enter Destination Details</h4>
                 <!-- Container for wishlist -->
                 <ul id="myWishlistWrapper"></ul>
             </section>
         </div>
     </main>
+
     <footer>
         <p class="footer">2023 aspiringadventures.com</p>
         <!-- External JS -->
-        <script src="./script.js"></script>
+        <script type="module" src="./main.js"></script>
     </footer>
 </body>
 </html>
